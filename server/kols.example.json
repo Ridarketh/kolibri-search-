@@ -1,0 +1,4 @@
+[
+  { "platform": "tg", "handle": "example_channel" },
+  { "platform": "x", "handle": "example_kol" }
+]

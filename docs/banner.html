@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- Source for docs/banner.png and docs/social-preview.png (rendered with Playwright, see README "Development"). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  html, body { margin: 0; }
+  body {
+    width: 1280px; height: 640px; overflow: hidden; position: relative;
+    background-color: #f3f8f6;
+    /* squared school-notebook paper: a report card, after all */
+    background-image:
+      linear-gradient(#dfeae5 1px, transparent 1px),
+      linear-gradient(90deg, #dfeae5 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: -1px -1px;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: #0f1b2d;
+  }
+  .copy { position: absolute; left: 72px; top: 92px; width: 560px; }
+  .copy img { width: 150px; height: 150px; display: block; margin: 0 0 18px -12px; }
+  h1 { margin: 0; font-size: 92px; line-height: .95; font-weight: 800; letter-spacing: -0.045em; }
+  .tag { margin: 18px 0 0; font-size: 31px; line-height: 1.2; font-weight: 600; letter-spacing: -0.015em; }
+  .sub { margin: 16px 0 0; font-size: 19px; line-height: 1.5; color: #4f5f73; max-width: 470px; }
+  .shot { position: absolute; border-radius: 14px; box-shadow: 0 30px 60px -20px rgba(15, 27, 45, .35), 0 4px 14px rgba(15, 27, 45, .12); }
+  .dark { width: 300px; right: -26px; top: 118px; }
+  .light { width: 318px; right: 248px; top: 46px; }
+</style>
+</head>
+<body>
+  <div class="copy">
+    <img src="../extension/assets/kolibri.svg" alt="">
+    <h1>Kolibri</h1>
+    <p class="tag">Report cards for crypto KOLs.</p>
+    <p class="sub">Every token they called on X and Telegram, and what it did 24 hours and 7 days later.</p>
+  </div>
+  <img class="shot dark" src="screenshots/card-dark.png" alt="">
+  <img class="shot light" src="screenshots/card-light.png" alt="">
+</body>
+</html>

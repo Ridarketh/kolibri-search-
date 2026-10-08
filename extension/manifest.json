@@ -1,0 +1,87 @@
+{
+  "manifest_version": 3,
+  "name": "Kolibri — KOL Call Tracker",
+  "short_name": "Kolibri",
+  "version": "0.1.0",
+  "minimum_chrome_version": "116",
+  "description": "Report cards for crypto KOLs on X and Telegram: every token they called and what it did 24 hours and 7 days later.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "Kolibri — KOL leaderboard",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://data-api.binance.vision/*",
+    "https://api.dexscreener.com/*",
+    "https://api.geckoterminal.com/*",
+    "https://api.coingecko.com/*",
+    "https://t.me/*"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://x.com/*",
+        "https://twitter.com/*",
+        "https://mobile.x.com/*"
+      ],
+      "js": [
+        "shared/config.js",
+        "shared/extract.js",
+        "shared/score.js",
+        "shared/ledger.js",
+        "shared/format.js",
+        "content/common.js",
+        "content/styles.js",
+        "content/ui.js",
+        "content/x.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://web.telegram.org/*"
+      ],
+      "js": [
+        "shared/config.js",
+        "shared/minihtml.js",
+        "shared/extract.js",
+        "shared/score.js",
+        "shared/ledger.js",
+        "shared/format.js",
+        "shared/telegram-preview.js",
+        "content/common.js",
+        "content/styles.js",
+        "content/ui.js",
+        "content/telegram.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

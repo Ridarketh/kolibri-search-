@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kolibri report</title>
+  <link rel="icon" href="../icons/icon-32.png">
+  <link rel="stylesheet" href="../pages/pages.css">
+  <link rel="stylesheet" href="report.css">
+</head>
+<body>
+  <nav class="bar">
+    <a class="home" href="#" id="home"><img src="../assets/kolibri.svg" alt="" width="26" height="26"><b>Kolibri</b></a>
+    <a class="link" href="../options/options.html#method" target="_blank">How grades work</a>
+  </nav>
+
+  <main class="wrap">
+    <header class="who" id="who">
+      <div class="skeleton" style="height:64px;width:60%"></div>
+    </header>
+
+    <div class="seg source" id="source" role="group" aria-label="Data source" hidden>
+      <button type="button" data-view="network" aria-pressed="false">Kolibri network</button>
+      <button type="button" data-view="local" aria-pressed="true">This device</button>
+    </div>
+
+    <section class="stats" id="stats" aria-label="Summary"></section>
+
+    <section class="chart-wrap" id="chartWrap" hidden>
+      <h2>7-day result of every call</h2>
+      <div id="chart"></div>
+    </section>
+
+    <section class="calls" id="callsWrap" hidden>
+      <div class="toolbar">
+        <div class="chips" id="filter" role="group" aria-label="Show">
+          <button type="button" data-f="all" aria-pressed="true">All</button>
+          <button type="button" data-f="up" aria-pressed="false">Up after 7d</button>
+          <button type="button" data-f="down" aria-pressed="false">Down after 7d</button>
+          <button type="button" data-f="wait" aria-pressed="false">Waiting</button>
+          <button type="button" data-f="na" aria-pressed="false">No price</button>
+        </div>
+        <div class="tools">
+          <button class="btn" id="recheck" type="button" title="Try again to price calls that have no price yet">Re-check prices</button>
+          <button class="btn primary" id="export" type="button">Export CSV</button>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th data-sort="postedAt" class="l" aria-sort="descending"><button type="button">Called</button></th>
+              <th class="l">Token</th>
+              <th class="l">Market</th>
+              <th>Entry</th>
+              <th data-sort="r24"><button type="button">24h</button></th>
+              <th data-sort="r7"><button type="button">7d</button></th>
+              <th data-sort="rPeak"><button type="button">Peak</button></th>
+              <th data-sort="rLow"><button type="button">Low</button></th>
+              <th class="l">Post</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <div class="lock" id="lock" hidden></div>
+    </section>
+
+    <section class="empty" id="empty" hidden></section>
+    <p class="error" id="error" role="alert" hidden></p>
+
+    <footer class="foot">
+      <span id="footNote"></span>
+      <button class="link danger" id="delete" type="button" hidden>Delete this account’s data</button>
+    </footer>
+  </main>
+
+  <script src="../shared/config.js"></script>
+  <script src="../shared/format.js"></script>
+  <script src="../shared/score.js"></script>
+  <script src="../pages/kit.js"></script>
+  <script src="report.js"></script>
+</body>
+</html>

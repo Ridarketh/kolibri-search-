@@ -1,0 +1,21 @@
+{
+  "name": "kolibri",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Kolibri — report cards for crypto KOLs on X and Telegram. Browser extension + reference server.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test \"test/*.test.js\"",
+    "test:e2e": "node test/e2e/run.js",
+    "icons": "node scripts/render-icons.js",
+    "pack": "node scripts/pack.js",
+    "server": "node server/src/index.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.0",
+    "sharp": "^0.35.4"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}

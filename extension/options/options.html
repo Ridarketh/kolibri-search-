@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kolibri settings</title>
+  <link rel="icon" href="../icons/icon-32.png">
+  <link rel="stylesheet" href="../pages/pages.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="masthead">
+      <img src="../assets/kolibri.svg" alt="" width="52" height="52">
+      <div>
+        <h1>Kolibri</h1>
+        <p>Report cards for crypto KOLs on X and Telegram</p>
+      </div>
+    </header>
+
+    <section id="welcome" class="welcome" hidden>
+      <h2>Kolibri is ready</h2>
+      <ol class="steps">
+        <li><b>Open X or Telegram Web.</b> Kolibri reads the posts on screen and notes every $ticker and contract address.</li>
+        <li><b>Look for the hummingbird</b> next to a name or channel title. The letter is the grade; hover it for the report card.</li>
+        <li><b>On a profile, press Scan timeline.</b> On a public Telegram channel, history loads by itself from t.me.</li>
+      </ol>
+      <div class="row-actions">
+        <a class="btn primary" href="https://x.com/home" target="_blank" rel="noopener">Open X</a>
+        <a class="btn" href="https://web.telegram.org/" target="_blank" rel="noopener">Open Telegram Web</a>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Where Kolibri appears</h2>
+      <label class="setting"><span class="text"><b>X (Twitter)</b><small>Badges next to authors, report cards, call collection.</small></span><span class="switch"><input type="checkbox" data-setting="showOnX"><span></span></span></label>
+      <label class="setting"><span class="text"><b>Telegram Web</b><small>Badges next to channel titles in web.telegram.org (both the K and A versions).</small></span><span class="switch"><input type="checkbox" data-setting="showOnTelegram"><span></span></span></label>
+      <label class="setting"><span class="text"><b>Badges for accounts without calls</b><small>Off by default so your timeline stays quiet.</small></span><span class="switch"><input type="checkbox" data-setting="showEmpty"><span></span></span></label>
+    </section>
+
+    <section class="panel">
+      <h2>What counts as a call</h2>
+      <label class="setting"><span class="text"><b>Count majors</b><small>BTC, ETH, SOL, BNB and other large caps. Usually market commentary rather than a call.</small></span><span class="switch"><input type="checkbox" data-setting="includeMajors"><span></span></span></label>
+      <label class="setting"><span class="text"><b>Load Telegram channel history automatically</b><small>When you open a public channel, Kolibri reads its posts from t.me once a day.</small></span><span class="switch"><input type="checkbox" data-setting="autoHistory"><span></span></span></label>
+      <label class="setting"><span class="text"><b>How far back to read</b><small>For timeline scans and channel history.</small></span>
+        <select data-setting="historyDepthDays" data-type="number">
+          <option value="30">30 days</option>
+          <option value="60">60 days</option>
+          <option value="120">120 days</option>
+          <option value="180">180 days</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="panel">
+      <h2>Prices</h2>
+      <p class="lead">Tickers listed on Binance are priced from Binance. Tokens that trade only on DEXes are priced from GeckoTerminal, which answers about 10 requests a minute without a key, so a long history takes a few minutes. A free CoinGecko Demo key raises that to 30.</p>
+      <div class="field">
+        <label for="geckoKey">CoinGecko Demo API key <span class="opt">optional</span></label>
+        <div class="inline">
+          <input id="geckoKey" type="password" placeholder="CG-…" autocomplete="off" spellcheck="false">
+          <button class="btn" id="saveGecko" type="button">Save key</button>
+        </div>
+        <small>Get one at coingecko.com/en/api. Stored only in this browser.</small>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Kolibri network <span class="opt">optional</span></h2>
+      <p class="lead">A Kolibri server collects calls around the clock, so report cards include history you never scrolled past. The public leaderboard is free; full history and CSV export of network data need Kolibri Pro.</p>
+      <div class="field">
+        <label for="apiUrl">Server URL</label>
+        <div class="inline">
+          <input id="apiUrl" type="url" placeholder="https://api.your-kolibri.app" autocomplete="off" spellcheck="false">
+          <button class="btn" id="saveApi" type="button">Connect</button>
+        </div>
+        <small id="apiStatus">Not connected. Kolibri works fully on this device without a server.</small>
+      </div>
+      <label class="setting"><span class="text"><b>Share calls with the network</b><small>Sends the links of posts with calls you see (author, post id). The server re-reads each post itself before counting it.</small></span><span class="switch"><input type="checkbox" data-setting="contribute"><span></span></span></label>
+      <div class="field">
+        <label for="license">Pro license key</label>
+        <div class="inline">
+          <input id="license" type="text" placeholder="KOLIBRI-…" autocomplete="off" spellcheck="false">
+          <button class="btn" id="activate" type="button">Activate</button>
+          <button class="btn" id="deactivate" type="button" hidden>Remove</button>
+        </div>
+        <small id="planStatus">Free plan.</small>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Your data</h2>
+      <p class="lead" id="dataStats">Everything Kolibri collects stays in this browser.</p>
+      <div class="row-actions">
+        <button class="btn" id="exportAll" type="button">Download backup</button>
+        <label class="btn" for="importFile">Restore backup</label>
+        <input id="importFile" type="file" accept="application/json,.json" hidden>
+        <button class="btn danger" id="clearAll" type="button">Delete all data</button>
+      </div>
+      <small id="dataMsg" class="msg" role="status"></small>
+    </section>
+
+    <section class="panel method" id="method">
+      <h2>How report cards work</h2>
+      <dl>
+        <dt>A call</dt>
+        <dd>The first time an account posts a token’s $ticker or contract address. Mentions of the same token within 7 days are the same call. Posts that list more than six tokens are commentary, not calls. Stablecoins, fiat, stock tickers and (unless you turn them on) majors are ignored.</dd>
+        <dt>Entry price</dt>
+        <dd>The price within 15 minutes after the post: the close of the 15-minute candle that contains it.</dd>
+        <dt>24h, 7d and peak</dt>
+        <dd>The price 24 hours and 7 days after the post, and the best 15-minute close within those 7 days. Tokens that launched on a bonding curve are followed into the pool they migrated to.</dd>
+        <dt>Where prices come from</dt>
+        <dd>Binance spot for listed tickers, with full history. DEX tokens are matched with DexScreener and priced with GeckoTerminal candles, which go back six months on the free API; older DEX calls show n/a. A ticker without an address is matched to its most liquid token, so check the market shown on hover.</dd>
+        <dt>Grade</dt>
+        <dd>A score from 0 to 100: 60% the share of calls that were up after 7 days, 40% the median 7-day return (capped at ±100%), pulled toward 50 while there are few calls. A is 75 and up, B 62, C 50, D 38, F below that. A grade appears once 3 calls have a 7-day result.</dd>
+        <dt>$100 in each call</dt>
+        <dd>What putting the same amount into every call and selling a week later would have returned.</dd>
+        <dt>Privacy</dt>
+        <dd>Kolibri reads the X and Telegram Web pages you open and keeps what it finds in this browser. It asks Binance, DexScreener and GeckoTerminal for prices and t.me for public channel posts. Nothing else leaves your device unless you connect a Kolibri network server.</dd>
+      </dl>
+    </section>
+
+    <footer class="foot">Kolibri <span id="version"></span>. The hummingbird hovers so you can see the receipts.</footer>
+  </main>
+
+  <script src="../shared/config.js"></script>
+  <script src="../shared/format.js"></script>
+  <script src="../pages/kit.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

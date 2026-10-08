@@ -1,0 +1,37 @@
+body { width: 392px; min-height: 420px; max-height: 600px; display: flex; flex-direction: column; }
+
+.top { display: flex; align-items: center; gap: 10px; padding: 14px 14px 10px; }
+.logo { width: 34px; height: 34px; }
+.brand { flex: 1; min-width: 0; }
+.brand h1 { margin: 0; font-size: 17px; line-height: 1.1; letter-spacing: -.01em; }
+.brand p { margin: 1px 0 0; font-size: 12px; color: var(--muted); }
+.icon { border: 0; background: transparent; color: var(--muted); width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; cursor: pointer; }
+.icon:hover { background: var(--surface); color: var(--ink); }
+
+.controls { padding: 0 14px 8px; display: grid; gap: 8px; }
+.filter-row { display: flex; gap: 8px; align-items: center; }
+.filter-row input { flex: 1; padding: 5px 10px; font-size: 13px; }
+
+.board { list-style: none; margin: 0; padding: 0 6px 6px; overflow-y: auto; flex: 1; }
+.board li { margin: 0; }
+.row { width: 100%; display: flex; align-items: center; gap: 10px; border: 0; background: transparent; text-align: left; padding: 8px; border-radius: 10px; cursor: pointer; }
+.row:hover { background: var(--hover); }
+.rank { width: 20px; flex: none; text-align: right; color: var(--faint); font-size: 12px; font-weight: 600; }
+.who { flex: 1; min-width: 0; }
+.name { display: block; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sub { display: block; font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.nums { flex: none; text-align: right; }
+.nums .n { display: block; font-weight: 700; font-size: 13.5px; }
+.nums .k { display: block; font-size: 11px; color: var(--muted); }
+
+.empty { padding: 18px 26px 10px; text-align: center; color: var(--muted); }
+.empty h2 { color: var(--ink); font-size: 16px; margin: 10px 0 6px; }
+.empty p { margin: 0 0 14px; font-size: 13px; }
+.empty-actions { display: flex; gap: 8px; justify-content: center; }
+
+.nomatch, .error { margin: 6px 20px; font-size: 13px; color: var(--muted); }
+.error { color: var(--down); }
+
+.foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 9px 14px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted); }
+.foot a { color: var(--muted); }
+.foot a:hover { color: var(--ink); }

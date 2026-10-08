@@ -1,0 +1,43 @@
+body { background: var(--surface); }
+.wrap { max-width: 700px; margin: 0 auto; padding: 36px 20px 60px; }
+
+.masthead { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
+.masthead h1 { margin: 0; font-size: 26px; letter-spacing: -.02em; line-height: 1.1; }
+.masthead p { margin: 2px 0 0; color: var(--muted); }
+
+.welcome { background: var(--ink); color: var(--bg); border-radius: 16px; padding: 22px 24px; margin-bottom: 18px; }
+.welcome h2 { margin: 0 0 12px; font: 700 22px/1.2 var(--serif); }
+.steps { margin: 0 0 18px; padding-left: 22px; display: grid; gap: 8px; }
+.steps li::marker { font-weight: 700; color: var(--accent); }
+.welcome .btn:not(.primary) { background: rgba(255,255,255,.12); color: inherit; }
+@media (prefers-color-scheme: dark) { .welcome .btn:not(.primary) { background: rgba(0,0,0,.08); } }
+
+.panel { background: var(--bg); border-radius: 14px; padding: 20px 22px 8px; margin-bottom: 14px; }
+.panel h2 { margin: 0 0 6px; font-size: 16px; }
+.lead { margin: 0 0 12px; color: var(--muted); font-size: 13.5px; max-width: 62ch; }
+.opt { font-size: 12px; font-weight: 500; color: var(--faint); margin-left: 4px; }
+
+.setting { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 0; border-top: 1px solid var(--line); cursor: pointer; }
+.setting:first-of-type { border-top: 0; }
+.setting .text { display: grid; gap: 2px; }
+.setting small { color: var(--muted); font-size: 12.5px; }
+.setting select { flex: none; }
+
+.field { padding: 10px 0 14px; border-top: 1px solid var(--line); display: grid; gap: 6px; }
+.panel > .field:first-of-type { border-top: 0; }
+.field label { font-weight: 650; }
+.field small { color: var(--muted); font-size: 12.5px; }
+.inline { display: flex; gap: 8px; }
+.inline input { flex: 1; }
+.ok { color: var(--up) !important; }
+.bad { color: var(--down) !important; }
+
+.row-actions { display: flex; flex-wrap: wrap; gap: 8px; padding-bottom: 12px; }
+.msg { display: block; min-height: 18px; color: var(--muted); padding-bottom: 10px; }
+
+.method dl { margin: 6px 0 14px; display: grid; grid-template-columns: 150px 1fr; gap: 10px 18px; }
+.method dt { font-weight: 650; }
+.method dd { margin: 0; color: var(--muted); font-size: 13.5px; max-width: 62ch; }
+@media (max-width: 560px) { .method dl { grid-template-columns: 1fr; gap: 2px; } .method dd { margin-bottom: 10px; } }
+
+.foot { color: var(--faint); font-size: 12.5px; margin-top: 22px; text-align: center; }

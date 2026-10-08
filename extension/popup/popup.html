@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kolibri</title>
+  <link rel="stylesheet" href="../pages/pages.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="top">
+    <img class="logo" src="../assets/kolibri.svg" alt="" width="34" height="34">
+    <div class="brand">
+      <h1>Kolibri</h1>
+      <p>Report cards for crypto KOLs</p>
+    </div>
+    <button id="settings" class="icon" type="button" title="Settings" aria-label="Settings">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.4 13a7.6 7.6 0 0 0 0-2l2-1.6-2-3.4-2.4 1a7.4 7.4 0 0 0-1.7-1l-.4-2.6h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.4-1-2 3.4 2 1.6a7.6 7.6 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6ZM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Z"/></svg>
+    </button>
+  </header>
+
+  <div class="controls">
+    <div class="seg" id="scope" role="group" aria-label="Data source" hidden>
+      <button type="button" data-scope="local" aria-pressed="true">This device</button>
+      <button type="button" data-scope="network" aria-pressed="false">Kolibri network</button>
+    </div>
+    <div class="filter-row">
+      <div class="chips" id="platform" role="group" aria-label="Platform">
+        <button type="button" data-p="all" aria-pressed="true">All</button>
+        <button type="button" data-p="x" aria-pressed="false">X</button>
+        <button type="button" data-p="tg" aria-pressed="false">Telegram</button>
+      </div>
+      <input id="q" type="search" placeholder="Find a KOL" aria-label="Find a KOL" autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+
+  <ol id="list" class="board" aria-label="KOL leaderboard"></ol>
+
+  <section id="empty" class="empty" hidden>
+    <img src="../assets/kolibri.svg" alt="" width="72" height="72">
+    <h2>No report cards yet</h2>
+    <p>Open X or Telegram Web and read as usual. Kolibri notes every $ticker and contract address the people you read post, then checks the price a day and a week later.</p>
+    <div class="empty-actions">
+      <a class="btn primary" href="https://x.com/home" target="_blank" rel="noopener">Open X</a>
+      <a class="btn" href="https://web.telegram.org/" target="_blank" rel="noopener">Open Telegram Web</a>
+    </div>
+  </section>
+
+  <p id="nomatch" class="nomatch" hidden>No KOLs match this filter.</p>
+  <p id="error" class="error" role="alert" hidden></p>
+
+  <footer class="foot">
+    <span id="status"></span>
+    <a href="#" id="how">How grades work</a>
+  </footer>
+
+  <script src="../shared/config.js"></script>
+  <script src="../shared/format.js"></script>
+  <script src="../shared/score.js"></script>
+  <script src="../pages/kit.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="6 8 112 110">
+  <defs>
+    <linearGradient id="kp" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5EEAD4"/>
+      <stop offset="0.55" stop-color="#22C55E"/>
+      <stop offset="1" stop-color="#0E9F6E"/>
+    </linearGradient>
+    <linearGradient id="kw" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#34D399"/>
+      <stop offset="1" stop-color="#B6F7DA"/>
+    </linearGradient>
+  </defs>
+  <path d="M60 50 C68 30 86 16 114 12 C108 32 92 50 70 62 Z" fill="url(#kw)"/>
+  <path d="M80 86 L104 114 L98 92 Z" fill="#0E9F6E"/>
+  <path d="M84 84 L116 100 L98 88 Z" fill="#12B27B"/>
+  <path d="M38 46 C40 70 58 88 84 94 C92 96 96 90 92 84 C82 66 70 52 58 38 C50 32 40 36 38 46 Z" fill="url(#kp)"/>
+  <path d="M38 50 C40 60 46 66 54 68 C52 60 48 54 40 48 Z" fill="#F43F5E"/>
+  <path d="M10 57 L39 44 L41 50 Z" fill="#94A3B8"/>
+  <circle cx="48" cy="44" r="3.4" fill="#0B1220"/>
+  <circle cx="47" cy="43" r="1.1" fill="#FFFFFF"/>
+</svg>

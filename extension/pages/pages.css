@@ -1,0 +1,65 @@
+/* Kolibri — shared tokens and components for the popup, options and report pages. */
+:root {
+  --bg: #ffffff; --surface: #f3f7f6; --ink: #0f1b2d; --muted: #5b6b7f; --faint: #8a99ab; --line: #e3eaee; --hover: #f6faf9;
+  --up: #087f5b; --up-bg: #dcf5ea; --down: #c81e43; --down-bg: #fde4ea; --mid: #a4660f; --mid-bg: #fbefd9;
+  --none: #4f5f73; --none-bg: #e7edf2; --accent: #0e9f6e; --accent-ink: #ffffff; --focus: #0e9f6e;
+  --serif: Charter, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1726; --surface: #142033; --ink: #e6edf5; --muted: #8a9bb0; --faint: #61728a; --line: #22324a; --hover: #132035;
+    --up: #3dd9a0; --up-bg: rgba(61, 217, 160, .13); --down: #ff6b8a; --down-bg: rgba(255, 107, 138, .13); --mid: #f2b84b; --mid-bg: rgba(242, 184, 75, .13);
+    --none: #b6c3d3; --none-bg: rgba(138, 155, 176, .16); --accent: #3dd9a0; --accent-ink: #062418; --focus: #3dd9a0;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 14px/1.45 var(--sans); -webkit-font-smoothing: antialiased; font-variant-numeric: tabular-nums; }
+a { color: inherit; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+[hidden] { display: none !important; }
+
+.tone-good { color: var(--up); background: var(--up-bg); }
+.tone-mid { color: var(--mid); background: var(--mid-bg); }
+.tone-bad { color: var(--down); background: var(--down-bg); }
+.tone-none { color: var(--none); background: var(--none-bg); }
+.up { color: var(--up); } .down { color: var(--down); } .flat, .none { color: var(--muted); }
+
+.stamp { display: inline-grid; place-items: center; min-width: 34px; height: 34px; padding: 0 4px; border-radius: 9px; font: 700 20px/1 var(--serif); }
+.stamp.lg { min-width: 64px; height: 64px; border-radius: 16px; font-size: 38px; }
+
+.ava { width: 36px; height: 36px; border-radius: 50%; flex: none; background: var(--surface); object-fit: cover; display: inline-grid; place-items: center; font-weight: 700; color: var(--muted); overflow: hidden; }
+.ava.lg { width: 64px; height: 64px; font-size: 24px; }
+
+.btn { display: inline-flex; align-items: center; gap: 6px; border: 0; cursor: pointer; padding: 8px 13px; border-radius: 9px; font-weight: 650; font-size: 13.5px; background: var(--surface); color: var(--ink); text-decoration: none; }
+.btn:hover { box-shadow: inset 0 0 0 1px var(--line); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { box-shadow: none; filter: brightness(1.06); }
+.btn.danger { color: var(--down); }
+.btn:disabled { opacity: .5; cursor: default; }
+
+.seg { display: flex; gap: 2px; padding: 3px; border-radius: 10px; background: var(--surface); }
+.seg button { flex: 1; border: 0; background: transparent; padding: 6px 10px; border-radius: 8px; font-size: 12.5px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--bg); color: var(--ink); box-shadow: 0 1px 2px rgba(15, 27, 45, .14); }
+
+.chips { display: flex; gap: 4px; }
+.chips button { border: 1px solid var(--line); background: transparent; padding: 4px 10px; border-radius: 99px; font-size: 12.5px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.chips button[aria-pressed="true"] { border-color: transparent; background: var(--ink); color: var(--bg); }
+
+input[type="search"], input[type="text"], input[type="url"], input[type="password"], select {
+  border: 1px solid var(--line); background: var(--bg); border-radius: 9px; padding: 7px 10px; font-size: 13.5px; min-width: 0;
+}
+input:focus-visible, select:focus-visible { outline: 0; border-color: var(--focus); box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 25%, transparent); }
+
+.switch { position: relative; display: inline-block; width: 38px; height: 22px; flex: none; }
+.switch input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.switch span { position: absolute; inset: 0; border-radius: 99px; background: var(--none-bg); transition: background .15s; pointer-events: none; }
+.switch span::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .15s; }
+.switch input:checked + span { background: var(--accent); }
+.switch input:checked + span::after { transform: translateX(16px); }
+.switch input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { .switch span, .switch span::after { transition: none; } }
